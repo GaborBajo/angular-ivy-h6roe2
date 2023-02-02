@@ -77,12 +77,12 @@ export class AppComponent implements OnInit, OnDestroy {
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
     // YOUR CODE STARTS HERE
-    /* this.isLoading = combineLatest(
+    this.isLoading = combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
     ).subscribe((value) => {
       this.areAllValuesTrue(value);
-    }); */
+    });
     // YOUR CODE ENDS HERE
   }
 
@@ -90,8 +90,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // 5.2 Unsubscribe from all subscriptions
     // YOUR CODE STARTS HERE
     this.searchTermByCharacters.unsubscribe();
-    /* this.charactersResults$.unsubscribe();
-    this.planetAndCharactersResults$.unsubscribe(); */
+    this.charactersResults$.unsubscribe();
+    this.planetAndCharactersResults$.unsubscribe();
     // YOUR CODE ENDS HERE
   }
 
