@@ -10,6 +10,7 @@ import {
   switchMap,
   distinctUntilChanged,
   debounceTime,
+  tap,
 } from 'rxjs';
 import { MockDataService } from './mock-data.service';
 
@@ -76,21 +77,12 @@ export class AppComponent implements OnInit, OnDestroy {
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
     // YOUR CODE STARTS HERE
-    /* this.isLoading = combineLatest(
+    this.isLoading = combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
     ).subscribe((value: boolean[]) => {
       this.areAllValuesTrue(value);
-    }); */
-    combineLatest(
-      this.mockDataService.getCharactersLoader(),
-      this.mockDataService.getPlanetLoader()
-    ).pipe(
-      //this.areAllValuesTrue(value);
-      map((value) => {
-        console.log(this.areAllValuesTrue(value));
-      })
-    );
+    });
     // YOUR CODE ENDS HERE
   }
 
