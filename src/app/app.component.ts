@@ -83,13 +83,6 @@ export class AppComponent implements OnInit, OnDestroy {
     ).pipe(
       map((value) => {
         this.areAllValuesTrue(value);
-      }),
-      map((result) => {
-        console.log(result);
-      }),
-      filter((value) => typeof value === 'boolean'),
-      map((result) => {
-        console.log(result);
       })
     );
     /* this.isLoading = combineLatest(
