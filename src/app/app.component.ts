@@ -84,6 +84,10 @@ export class AppComponent implements OnInit, OnDestroy {
       map((value) => {
         this.areAllValuesTrue(value);
       }),
+      tap((result) => {
+        debugger;
+        console.log();
+      }),
       filter((value) => typeof value === 'boolean'),
       tap((result) => {
         debugger;
