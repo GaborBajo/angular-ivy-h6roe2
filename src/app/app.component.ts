@@ -63,14 +63,10 @@ export class AppComponent implements OnInit, OnDestroy {
     // 4. On clicking the button 'Load Characters And Planets', it is necessary to process two requests and combine the results of both requests into one result array. As a result, a list with the names of the characters and the names of the planets is displayed on the screen.
     // Your code should looks like this: this.planetAndCharactersResults$ = /* Your code */
     // YOUR CODE STARTS HERE
-    this.planetAndCharactersResults$ = fromEvent(document, 'click')
-      .pipe(
-        forkJoin(
-          this.mockDataService.getCharacters(),
-          this.mockDataService.getPlatents()
-        )
-      )
-      .subscribe();
+    this.planetAndCharactersResults$ = combineLatest([
+      this.mockDataService.getCharacters(),
+      this.mockDataService.getPlatents(),
+    ]);
     // YOUR CODE ENDS HERE
   }
 
@@ -81,12 +77,12 @@ export class AppComponent implements OnInit, OnDestroy {
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
     // YOUR CODE STARTS HERE
-    this.isLoading = combineLatest(
+    /* this.isLoading = combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
     ).subscribe((value) => {
       this.areAllValuesTrue(value);
-    });
+    }); */
     // YOUR CODE ENDS HERE
   }
 
@@ -94,8 +90,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // 5.2 Unsubscribe from all subscriptions
     // YOUR CODE STARTS HERE
     this.searchTermByCharacters.unsubscribe();
-    this.charactersResults$.unsubscribe();
-    this.planetAndCharactersResults$.unsubscribe();
+    /* this.charactersResults$.unsubscribe();
+    this.planetAndCharactersResults$.unsubscribe(); */
     // YOUR CODE ENDS HERE
   }
 
