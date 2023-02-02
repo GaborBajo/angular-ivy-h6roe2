@@ -82,6 +82,13 @@ export class AppComponent implements OnInit, OnDestroy {
     ).subscribe((value: boolean[]) => {
       this.areAllValuesTrue(value);
     }); */
+    combineLatest(
+      this.mockDataService.getCharactersLoader(),
+      this.mockDataService.getPlanetLoader()
+    ).subscribe((value: boolean[]) => {
+      //this.areAllValuesTrue(value);
+      console.log(this.areAllValuesTrue(value));
+    });
     // YOUR CODE ENDS HERE
   }
 
