@@ -10,7 +10,6 @@ import {
   switchMap,
   distinctUntilChanged,
   debounceTime,
-  fromEvent,
 } from 'rxjs';
 import { MockDataService } from './mock-data.service';
 
