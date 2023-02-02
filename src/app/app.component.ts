@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.planetAndCharactersResults$ = forkJoin([
       this.mockDataService.getCharacters(),
       this.mockDataService.getPlatents(),
-    ]);
+    ]).pipe(map(([array1, array2]) => [...array1, ...array2]));
     // YOUR CODE ENDS HERE
   }
 
@@ -76,12 +76,12 @@ export class AppComponent implements OnInit, OnDestroy {
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
     // YOUR CODE STARTS HERE
-    this.isLoading = combineLatest(
+    /* this.isLoading = combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
     ).subscribe((value: boolean[]) => {
       this.areAllValuesTrue(value);
-    });
+    }); */
     // YOUR CODE ENDS HERE
   }
 
