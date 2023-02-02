@@ -80,7 +80,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isLoading = combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
-    ).subscribe((value) => {
+    ).subscribe((value: boolean[]) => {
       this.areAllValuesTrue(value);
     });
     // YOUR CODE ENDS HERE
