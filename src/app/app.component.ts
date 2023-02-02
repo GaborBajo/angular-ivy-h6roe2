@@ -51,8 +51,8 @@ export class AppComponent implements OnInit, OnDestroy {
       // YOUR CODE STARTS HERE
       distinctUntilChanged(),
       debounceTime(500),
-      filter((value) => value.length >= 3),
-      switchMap((value) => {
+      filter((value: string) => value.length >= 3),
+      switchMap((value: string) => {
         return this.mockDataService.getCharacters(value);
       })
     );
@@ -90,8 +90,12 @@ export class AppComponent implements OnInit, OnDestroy {
     // 5.2 Unsubscribe from all subscriptions
     // YOUR CODE STARTS HERE
     this.searchTermByCharacters.unsubscribe();
-    this.charactersResults$.unsubscribe();
-    this.planetAndCharactersResults$.unsubscribe();
+    this.charactersResults$.subscribe({
+      complete() {},
+    });
+    this.planetAndCharactersResults$.subscribe({
+      complete() {},
+    });
     // YOUR CODE ENDS HERE
   }
 
