@@ -85,10 +85,12 @@ export class AppComponent implements OnInit, OnDestroy {
     combineLatest(
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
-    ).subscribe((value: boolean[]) => {
+    ).pipe(
       //this.areAllValuesTrue(value);
-      console.log(this.areAllValuesTrue(value));
-    });
+      map((value) => {
+        console.log(this.areAllValuesTrue(value));
+      })
+    );
     // YOUR CODE ENDS HERE
   }
 
