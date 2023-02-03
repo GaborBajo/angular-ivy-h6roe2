@@ -11,7 +11,9 @@ import {
   distinctUntilChanged,
   debounceTime,
   tap,
+  take,
 } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { MockDataService } from './mock-data.service';
 
 @Component({
@@ -66,7 +68,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.planetAndCharactersResults$ = forkJoin([
       this.mockDataService.getCharacters(),
       this.mockDataService.getPlatents(),
-    ]).pipe(map(([array1, array2]) => [...array1, ...array2]));
+    ]).pipe(
+      first(),
+      map(([array1, array2]) => [...array1, ...array2])
+    );
     // YOUR CODE ENDS HERE
   }
 
@@ -81,6 +86,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.mockDataService.getCharactersLoader(),
       this.mockDataService.getPlanetLoader()
     ).subscribe((value: boolean[]) => {
+      console.log(value);
       this.isLoading = this.areAllValuesTrue(value);
     });
     // YOUR CODE ENDS HERE
