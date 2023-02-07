@@ -96,12 +96,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // 5.2 Unsubscribe from all subscriptions
     // YOUR CODE STARTS HERE
     this.searchTermByCharacters.unsubscribe();
-    this.charactersResults$.subscribe({
-      complete() {},
-    });
-    this.planetAndCharactersResults$.subscribe({
-      complete() {},
-    });
     // YOUR CODE ENDS HERE
   }
 
